@@ -32,27 +32,35 @@ public class SimpleStringBuffer {
     }
 
     public int getCursorPosition() {
-        throw new UnsupportedOperationException("Unimplemented method 'getCursorPosition'");
+        return cursor;
     }
+    
 
     public void moveLeft() {
-        throw new UnsupportedOperationException("Unimplemented method 'moveLeft'");
+        if (cursor > 0) {
+            cursor--;
+        }
     }
 
     public void moveRight() {
-        throw new UnsupportedOperationException("Unimplemented method 'moveRight'");
+        if(cursor < buffer.length()){
+            cursor++;
+        }
     }
 
     public int getSize() {
-        throw new UnsupportedOperationException("Unimplemented method 'getSize'");
+        return buffer.length();
     }
 
     public char getChar(int i) {
-        throw new UnsupportedOperationException("Unimplemented method 'getChar'");
+        if(i < 0 || i >= buffer.length()){
+            throw new IndexOutOfBoundsException();
+        }
+        return buffer.charAt(i);
     }
 
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("Unimplemented method 'toString'");
+        return buffer;
     }
 }
