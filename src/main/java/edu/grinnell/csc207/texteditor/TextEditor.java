@@ -17,17 +17,11 @@ public class TextEditor {
 
     public static void drawBuffer(GapBuffer buf, Screen screen) throws IOException {
         screen.clear();
-        int row = 0;
-        int col = 0;
         int size = buf.getSize();
-        // got help for screen.setCharacter by advice from Classmate Fui
         for (int i = 0; i < size; i++) {
             char character = buf.getChar(i);
-            
-            screen.setCharacter(col, row, new TextCharacter(character));
-            col++;
+            screen.setCharacter(i, 0, new TextCharacter(character));
         }
-
         screen.setCursorPosition(new TerminalPosition(buf.getCursorPosition(), 0));
         screen.refresh();
     }
@@ -59,10 +53,6 @@ public class TextEditor {
                 buffer.insert(bufferString.charAt(i));
             }
         }
-        
-        
-    
-  
 
         boolean isRunning = true;
         while (isRunning) {
@@ -87,8 +77,5 @@ public class TextEditor {
         }
         Files.writeString(path, buffer.toString());
     }
-
-   
-
 
 }
