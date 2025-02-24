@@ -19,14 +19,15 @@ public class GapBuffer {
     }
 
     private void ensureCapacity() {
-        if (endGap == size) {
-            char[] newBuffer = new char[buffer.length * 2];
+        if (startGap == endGap) {
+            int newSize = buffer.length * 2;
+            char[] newBuffer = new char[newSize];
             // suggested from netbeans after doing this with a for loop
 
             System.arraycopy(buffer, 0, newBuffer, 0, startGap);
-            int newEndGap = newBuffer.length - buffer.length - endGap;
+            int newEndGap = newSize - (size - startGap);
             System.arraycopy(buffer, endGap, newBuffer,
-                    newEndGap, size - endGap);
+                    newEndGap, size - startGap);
 
             buffer = newBuffer;
             endGap = newEndGap;
