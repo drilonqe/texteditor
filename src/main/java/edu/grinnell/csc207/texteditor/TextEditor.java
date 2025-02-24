@@ -23,6 +23,11 @@ public class TextEditor {
         // got help for screen.setCharacter by advice from Classmate Fui
         for (int i = 0; i < size; i++) {
             char character = buf.getChar(i);
+            
+            if(character == '\n'){
+                continue;
+            }
+            
             screen.setCharacter(col, row, new TextCharacter(character));
             col++;
         }
@@ -58,6 +63,10 @@ public class TextEditor {
                 buffer.insert(bufferString.charAt(i));
             }
         }
+        
+        
+    
+  
 
         boolean isRunning = true;
         while (isRunning) {
@@ -76,11 +85,14 @@ public class TextEditor {
                 buffer.moveRight();
             }
             if (stroke.getKeyType().equals(KeyType.Escape)) {
+                screen.stopScreen();
                 isRunning = false;
             }
         }
         Files.writeString(path, buffer.toString());
-        screen.stopScreen();
     }
+
+   
+
 
 }
