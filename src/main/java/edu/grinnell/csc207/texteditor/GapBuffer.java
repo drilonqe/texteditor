@@ -4,35 +4,99 @@ package edu.grinnell.csc207.texteditor;
  * A gap buffer-based implementation of a text buffer.
  */
 public class GapBuffer {
+
+    private char[] buffer;
+    private int startGap;
+    private int size;
+    private static final int INITIAL_SIZE = 10;
+    private int endGap;
+
+    public GapBuffer() {
+        this.buffer = new char[INITIAL_SIZE];
+        this.startGap = 0;
+        this.endGap = INITIAL_SIZE;
+        this.size = 0;
+    }
+
+    private void ensureCapacity() {
+        if (endGap == size) {
+            char[] newBuffer = new char[buffer.length * 2];
+            // suggested from netbeans after doing this with a for loop
+
+            System.arraycopy(buffer, 0, newBuffer, 0, startGap);
+            int newEndGap = newBuffer.length - buffer.length - endGap;
+            System.arraycopy(buffer, endGap, newBuffer,
+                    newEndGap, size - endGap);
+
+            buffer = newBuffer;
+            endGap = newEndGap;
+        }
+    }
+
+    // maybe when you insert stuff you need to shift everything
     public void insert(char ch) {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        ensureCapacity();
+        buffer[startGap] = ch;
+        startGap++;
+        size++;
     }
 
     public void delete() {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        if (startGap > 0) {
+            startGap--;
+            size--;
+        }
     }
 
     public int getCursorPosition() {
-        throw new UnsupportedOperationException("Unimplemented method 'getCursorPosition'");
+        return startGap;
     }
 
     public void moveLeft() {
-        throw new UnsupportedOperationException("Unimplemented method 'moveLeft'");
+        if (startGap > 0) {
+            startGap--;
+            endGap--;
+            buffer[endGap] = buffer[startGap];
+        }
     }
 
     public void moveRight() {
-        throw new UnsupportedOperationException("Unimplemented method 'moveRight'");
+        if (startGap > 0) {
+            buffer[startGap] = buffer[endGap];
+            startGap++;
+            endGap++;
+        }
     }
 
     public int getSize() {
-        throw new UnsupportedOperationException("Unimplemented method 'getSize'");
+        return size;
     }
 
     public char getChar(int i) {
-        throw new UnsupportedOperationException("Unimplemented method 'getChar'");
+        if (i < 0 || i >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (i < startGap) {
+            return buffer[i];
+        } else {
+            return buffer[endGap + i - startGap];
+        }
     }
 
+    @Override
     public String toString() {
-        throw new UnsupportedOperationException("Unimplemented method 'toString'");
+        String output = "";
+
+        // add characters before gap
+        for (int i = 0; i < startGap; i++) {
+            output += buffer[i];
+        }
+
+        //add characters after gap
+        for (int i = endGap; i < endGap + (size - startGap); i++){
+           output += buffer[i]; 
+    }
+
+        return output;
     }
 }
