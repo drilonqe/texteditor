@@ -24,10 +24,6 @@ public class TextEditor {
         for (int i = 0; i < size; i++) {
             char character = buf.getChar(i);
             
-            if(character == '\n'){
-                continue;
-            }
-            
             screen.setCharacter(col, row, new TextCharacter(character));
             col++;
         }
