@@ -20,7 +20,6 @@ public class GapBufferTests {
         buffer.insert('7');
         assertEquals("CSC207", buffer.toString());
         assertEquals(6, buffer.getCursorPosition());
-
         buffer.delete();
         buffer.delete();
         buffer.delete();
@@ -37,14 +36,12 @@ public class GapBufferTests {
         buffer.insert('2');
         buffer.insert('0');
         buffer.insert('7');
-
         buffer.moveLeft();
         buffer.moveLeft();
         buffer.moveLeft();
         assertEquals(3, buffer.getCursorPosition());
         buffer.insert('Z');
         assertEquals("CSCZ207", buffer.toString());
-
         buffer.moveRight();
         buffer.moveRight();
         buffer.moveRight();
@@ -60,7 +57,6 @@ public class GapBufferTests {
         buffer.insert('2');
         buffer.insert('0');
         buffer.insert('7');
-
         assertEquals('2', buffer.getChar(3));
         assertEquals('C', buffer.getChar(0));
         assertEquals('7', buffer.getChar(5));
@@ -72,11 +68,11 @@ public class GapBufferTests {
         // moving left on an empty buffer should not change anything.
         buffer.moveLeft();
         assertEquals(0, buffer.getCursorPosition());
-
+        
         // deleting an empty buffer should not change anything.
         buffer.delete();
         assertEquals("", buffer.toString());
-
+        
         // moving the cursor to the right when there is no more characters in 
         // buffer should not do anything.
         buffer.insert('x');
@@ -102,7 +98,6 @@ public class GapBufferTests {
         assertEquals(1, buffer.getSize());
         assertEquals(ch, buffer.getChar(0));
         assertEquals(1, buffer.getCursorPosition());
-
         buffer.insert(ch);
         assertEquals(2, buffer.getSize());
         buffer.moveLeft();
