@@ -62,7 +62,7 @@ public class GapBuffer {
     }
 
     public void moveRight() {
-        if (startGap > 0) {
+        if (endGap < buffer.length) {  //changd
             buffer[startGap] = buffer[endGap];
             startGap++;
             endGap++;
