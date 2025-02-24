@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import net.jqwik.api.*;
 import net.jqwik.api.constraints.*;
+
 public class SimpleStringBufferTests {
 
     @Test
