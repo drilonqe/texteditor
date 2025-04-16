@@ -1,6 +1,14 @@
-# CSC 207: Text Editor
+# CSC 207: Text Editor REVISION
 
 **Author**: _Drilon Qerimi
+
+### Grader Comments:
+Your project almost fulfills the requirements for an E. Make sure you review the style by running `mvn checkstyle:check`. Well done!
+
+### CHANGELOG:
++ Added missing Javadoc comment for the gapBuffer() constructor in gapBuffer.java
++ Added missing Javadoc comment for the SimpleStringBuffer() constructor in SimpleStringBuffer.java
++ Added missing Javadoc comment for drawBuffer(GapBuffer buf, Screen screen) in TextEditor.java 
 
 ## Resources Used
 
