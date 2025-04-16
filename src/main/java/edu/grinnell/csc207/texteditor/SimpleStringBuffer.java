@@ -8,6 +8,10 @@ public class SimpleStringBuffer {
     public String buffer;
     public int cursor;
 
+    
+     /**
+     * Constructs a new, empty SimpleStringBuffer with the cursor at 0.
+     */
     public SimpleStringBuffer() {
         this.buffer = "";
         this.cursor = 0;
