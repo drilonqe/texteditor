@@ -11,6 +11,9 @@ public class GapBuffer {
     private static final int INITIAL_SIZE = 10;
     private int endGap;
 
+    /**
+     * Constructs a new, empty GapBuffer with an initial size.
+     */
     public GapBuffer() {
         this.buffer = new char[INITIAL_SIZE];
         this.startGap = 0;
