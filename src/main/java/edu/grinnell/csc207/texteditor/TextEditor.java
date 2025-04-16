@@ -15,6 +15,13 @@ import java.nio.file.Paths;
  */
 public class TextEditor {
 
+   /**
+     * Draws the contents of the buffer
+     * 
+     * @param buf    Gap buffer that has text we want to display
+     * @param screen The screen with the text
+     * @throws IOException if an error occurs when drawing to screen
+     */
     public static void drawBuffer(GapBuffer buf, Screen screen) throws IOException {
         screen.clear();
         int size = buf.getSize();
@@ -25,6 +32,7 @@ public class TextEditor {
         screen.setCursorPosition(new TerminalPosition(buf.getCursorPosition(), 0));
         screen.refresh();
     }
+
 
     /**
      * The main entry point for the TextEditor application.
